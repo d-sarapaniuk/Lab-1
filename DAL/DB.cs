@@ -11,11 +11,11 @@ namespace DAL
             StreamWriter streamWriter = new StreamWriter(fs);
 
             string objType = obj.GetType().Name;
-            streamWriter.WriteLine($"{objType} {objName} \n{{");
+            streamWriter.Write($"\n{objType} {objName}\n{{\n");
 
             foreach (var prop in obj.GetType().GetProperties())
             {
-                streamWriter.WriteLine($"{prop.Name}: {prop.GetValue(obj, null)}");
+                streamWriter.Write($"{prop.Name}: {prop.GetValue(obj, null)}\n");
             }
             streamWriter.Write("}");
 
